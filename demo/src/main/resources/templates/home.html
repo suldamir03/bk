@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Burger king</title>
+</head>
+<body>
+<img th:src="@{/images/Burger_King_logo_(1999).svg.png}" height="100px" width="100px" alt="There should be a picture">
+
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+<a th:href="@{/registration}">Create account</a>
+<br>
+<a th:href="@{/admin}">Go to admin page</a>
+<br>
+<a th:href="@{/design}">Create your own burger</a>
+
+<div th:each="burger : ${burgers}">
+    <p th:text="${'Id : ' + burger.id}"></p>
+    <p th:text="${' Name : ' + burger.name}"></p>
+    <form th:action="@{/addToOrder/{id}(id=${burger.getId()})}" method="post" th:object="${order}">
+        <button type="submit" value="Add to order">Add to order</button>
+
+    </form>
+
+</div>
+<div th:each="ord : ${orders}">
+    <p th:text="${'Client: ' + ord.getUser().getUsername()}"></p>
+    <p th:text="${'Date: ' + ord.getCreatedAt()}"></p>
+    <div th:each="burg : ${ord.getOrder_burgers()}">
+        <p th:text="${burg.getName()}"></p>
+    </div>
+    <hr>
+</div>
+
+<!--<div th:each="user : ${users}">
+    <p th:text="'Name: ' + ${user.username}"></p>
+
+</div>-->
+</body>
+</html>

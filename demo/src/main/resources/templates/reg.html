@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+<p>Registration</p>
+
+<div th:if="${RegMessage}" th:text="${RegMessage}">
+
+</div>
+<form method="post" th:action="@{/registration}" th:object="${user}">
+    User name : <input type="text" th:field="*{username}"><br>
+    password : <input type="text" th:field="*{password}"><br>
+    <button type="submit">Register</button>
+</form>
+</body>
+</html>

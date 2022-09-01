@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin panel</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>UserName</th>
+        <th>Password</th>
+        <th>Roles</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--<tr th:if="${allUsers.empty}">
+        <td colspan="2"> No  Users </td>
+    </tr>-->
+    <tr th:each="user : ${allUsers}">
+        <td><span th:text="${user.id}"> id </span></td>
+        <td><span th:text="${user.username}"> Username </span></td>
+        <td><span th:text="${user.password}"> Pass </span></td>
+        <td><div th:each="role : ${user.roles}">
+        <span th:text="${role.name}">Role name</span>
+        </div></td>
+        <td>
+            <form action="${pageContext.request.contextPath}/admin" method="post">
+                <input type="hidden" name="userId" value="${user.id}"/>
+                <input type="hidden" name="action" value="delete"/>
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
