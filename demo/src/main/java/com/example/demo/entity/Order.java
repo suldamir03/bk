@@ -33,10 +33,9 @@ public class Order implements Serializable {
     }
 
     public String getCreatedAt() {
-        LocalDateTime myDateObj = LocalDateTime.now();
-        this.createdAt = myDateObj;
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        String formattedDate = myDateObj.format(myFormatObj);
+
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String formattedDate = this.createdAt.format(myFormatObj);
         return formattedDate;
     }
 
