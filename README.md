@@ -13,8 +13,6 @@ Spring Data Jpa,
 
 Thymleaf, 
 
-Hibernate, 
-
 I think i made some development in my proggraming skills
 
 Maybe in future i will add to Summer practice some Transactions and after add it there, but i think there just crud operations 
